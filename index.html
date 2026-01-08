@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Listen freely</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="bg-cover" id="bgCover"></div>
+    <div class="container">
+        <div class="header">
+            <h1>Listen freely</h1>
+            <p>Listen freely音乐播放器</p>
+        </div>
+        
+        <div class="main-content">
+            <div class="search-section">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="输入歌曲名/歌手名" value="张学友">
+                    <button id="searchBtn">搜索</button>
+                </div>
+                
+                <!-- 独立的 Tab 按钮容器 -->
+                <div class="tab-nav-container">
+                    <div class="tab-nav">
+                        <button class="tab-btn" id="searchTab">搜索结果</button>
+                        <button class="tab-btn active" id="collectTab">我的歌单</button>
+                        <button class="tab-btn" id="historyTab">播放记录</button>
+                    </div>
+                </div>
+
+                <!-- 独立的列表头部栏容器（歌单/历史记录） -->
+                <div class="tab-header-bar">
+                    <!-- 我的歌单头部栏 -->
+                    <div class="playlist-bar" id="playlistBar">
+                        <div class="playlist-title">我的收藏歌单</div>
+                        <div class="playlist-opt">
+                            <button class="playlist-btn play-all" id="playAllBtn" onclick="playAllSongs()">一键播放全部</button>
+                        </div>
+                    </div>
+                    <!-- 播放记录头部栏 -->
+                    <div class="history-bar" id="historyBar" style="display: none;">
+                        <div class="history-title">播放记录</div>
+                        <div class="history-opt"></div>
+                    </div>
+                </div>
+                
+                <!-- 独立的 Tab 内容容器 -->
+                <div class="tab-content-container">
+                    <div class="tab-content" id="searchContent">
+                        <div class="empty-tip" id="searchEmpty">暂无搜索结果</div>
+                    </div>
+                    <div class="tab-content active" id="collectContent">
+                        <div class="empty-tip" id="collectEmpty">歌单暂无歌曲</div>
+                    </div>
+                    <div class="tab-content" id="historyContent">
+                        <div class="empty-tip" id="historyEmpty">暂无播放记录</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="lyric-section">
+                <div class="player-info">
+                    <div class="player-title" id="playerTitle">未播放歌曲</div>
+                    <div class="player-author" id="playerAuthor">点击歌曲开始播放</div>
+                </div>
+                <div class="lyric-container" id="lyricContainer">
+                    <div class="lyric-wrapper" id="lyricWrapper">
+                        <div class="lyric-line">暂无歌词</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="player-controls">
+        <div class="controls-wrapper">
+            <div class="audio-controls">
+                <button class="audio-btn" id="prevBtn">◄</button>
+                <button class="audio-btn play-pause" id="playPauseBtn" onclick="togglePlayPause()">▶</button>
+                <button class="audio-btn" id="nextBtn">►</button>
+            </div>
+            
+            <div class="volume-control">
+                <span class="volume-icon">🔊</span>
+                <input type="range" class="volume-slider" id="volumeSlider" min="0" max="1" step="0.01" value="0.7">
+            </div>
+            
+            <div class="control-actions">
+                <button class="clear-history-btn" id="clearHistoryBtn" onclick="showConfirmModal('确定要清空所有播放记录吗？此操作不可恢复', clearPlayHistory)">清空播放记录</button>
+            </div>
+        </div>
+        <div class="progress-container" id="progressContainer">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+        <div class="time-display">
+            <span id="currentTime">00:00</span>
+            <span id="totalTime">00:00</span>
+        </div>
+    </div>
+    
+    <div class="confirm-modal" id="confirmModal">
+        <div class="confirm-content">
+            <div class="confirm-icon">⚠️</div>
+            <div class="confirm-title">确认操作</div>
+            <div class="confirm-desc" id="confirmDesc">你确定要执行此操作吗？</div>
+            <div class="confirm-btns">
+                <button class="confirm-btn btn-cancel" onclick="hideConfirmModal()">取消</button>
+                <button class="confirm-btn btn-confirm" onclick="executeConfirmCallback()">确认</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
