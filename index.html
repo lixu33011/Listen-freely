@@ -11,7 +11,7 @@
     <div class="container">
         <div class="header">
             <h1>Listen freely</h1>
-            <p>Listen freely音乐播放器</p>
+            
         </div>
         
         <div class="main-content">
@@ -34,14 +34,17 @@
                 <div class="tab-header-bar">
                     <!-- 我的歌单头部栏 -->
                     <div class="playlist-bar" id="playlistBar">
-                        <div class="playlist-title">我的收藏歌单</div>
+                         <!--<div class="playlist-title">我的收藏歌单</div> -->
                         <div class="playlist-opt">
                             <button class="playlist-btn play-all" id="playAllBtn" onclick="playAllSongs()">一键播放全部</button>
                         </div>
                     </div>
                     <!-- 播放记录头部栏 -->
                     <div class="history-bar" id="historyBar" style="display: none;">
-                        <div class="history-title">播放记录</div>
+                           <div class="control-actions">
+                <button class="clear-history-btn" id="clearHistoryBtn" onclick="showConfirmModal('确定要清空所有播放记录吗？此操作不可恢复', clearPlayHistory)">清空播放记录</button>
+            </div>
+                         <!--<div class="history-title">播放记录</div> -->
                         <div class="history-opt"></div>
                     </div>
                 </div>
@@ -77,9 +80,9 @@
     <div class="player-controls">
         <div class="controls-wrapper">
             <div class="audio-controls">
-                <button class="audio-btn" id="prevBtn">◄</button>
+                <button class="audio-btn" id="prevBtn">⏮︎</button>
                 <button class="audio-btn play-pause" id="playPauseBtn" onclick="togglePlayPause()">▶</button>
-                <button class="audio-btn" id="nextBtn">►</button>
+                <button class="audio-btn" id="nextBtn">⏭ </button>
             </div>
             
             <div class="volume-control">
@@ -87,9 +90,9 @@
                 <input type="range" class="volume-slider" id="volumeSlider" min="0" max="1" step="0.01" value="0.7">
             </div>
             
-            <div class="control-actions">
+              <!-- <div class="control-actions">
                 <button class="clear-history-btn" id="clearHistoryBtn" onclick="showConfirmModal('确定要清空所有播放记录吗？此操作不可恢复', clearPlayHistory)">清空播放记录</button>
-            </div>
+            </div>-->
         </div>
         <div class="progress-container" id="progressContainer">
             <div class="progress-bar" id="progressBar"></div>
