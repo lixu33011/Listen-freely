@@ -2,7 +2,7 @@ const CONFIG = {
     PLAYLIST_STORAGE_KEY: "music_player_playlist",
     PLAY_HISTORY_STORAGE_KEY: "music_player_play_history",
     MAX_HISTORY_COUNT: 50,
-    API_BASE_URL: "https://yy.",
+    API_BASE_URL: "https://yy.330115558.xyz",
     CACHE_CONFIG: {
         capacity: 1000,
         expire: {
